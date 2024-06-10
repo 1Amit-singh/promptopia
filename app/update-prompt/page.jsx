@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import Form from "@components/Form";
 
-const EditPrompt = () => {
+const EditPromptContent = () => {
   const router = useRouter();
-  const { data: session } = useSession();
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
   const [submitting, setSubmitting] = useState(false);
@@ -61,6 +60,13 @@ const EditPrompt = () => {
         handleSubmit={updatePrompt}
       />
     </div>
+  );
+};
+const EditPrompt = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditPromptContent />
+    </Suspense>
   );
 };
 
