@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 import React from "react";
 import Form from "@components/Form";
 
@@ -64,12 +63,4 @@ const EditPromptContent = () => {
   );
 };
 
-const EditPrompt = () => {
-  return (
-    <Suspense>
-      <EditPromptContent />
-    </Suspense>
-  );
-};
-
-export default EditPrompt;
+export default EditPromptContent;
